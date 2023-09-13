@@ -1,0 +1,267 @@
+Check Prime Number:
+
+
+#include <iostream>
+using namespace std;
+
+bool isPrime(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    if (isPrime(num)) {
+        cout << num << " is a prime number." << endl;
+    } else {
+        cout << num << " is not a prime number." << endl;
+    }
+
+    return 0;
+}
+2. Find Highest Value Digit:
+
+#include <iostream>
+using namespace std;
+
+int findHighestDigit(int num) {
+    int highestDigit = 0;
+    while (num > 0) {
+        int digit = num % 10;
+        highestDigit = max(highestDigit, digit);
+        num /= 10;
+    }
+    return highestDigit;
+}
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    int highest = findHighestDigit(num);
+    cout << "The highest value digit is: " << highest << endl;
+
+    return 0;
+}
+3. Calculate Power:
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double power(double x, int y) {
+    return pow(x, y);
+}
+
+int main() {
+    double base;
+    int exponent;
+    cout << "Enter the base: ";
+    cin >> base;
+    cout << "Enter the exponent: ";
+    cin >> exponent;
+
+    double result = power(base, exponent);
+    cout << base << " raised to the power " << exponent << " is " << result << endl;
+
+    return 0;
+}
+4. Pascal's Triangle:
+
+
+#include <iostream>
+using namespace std;
+
+long long binomialCoeff(int n, int k) {
+    if (k == 0 || k == n) return 1;
+    return binomialCoeff(n - 1, k - 1) + binomialCoeff(n - 1, k);
+}
+
+void printPascalsTriangle(int n) {
+    for (int line = 0; line < n; line++) {
+        for (int i = 0; i <= line; i++) {
+            cout << binomialCoeff(line, i) << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int numRows;
+    cout << "Enter the number of rows for Pascal's Triangle: ";
+    cin >> numRows;
+
+    printPascalsTriangle(numRows);
+
+    return 0;
+}
+5. Check Fibonacci Number:
+
+
+#include <iostream>
+using namespace std;
+
+bool isPerfectSquare(int x) {
+    int s = sqrt(x);
+    return (s * s == x);
+}
+
+bool isFibonacci(int n) {
+    return isPerfectSquare(5 * n * n + 4) || isPerfectSquare(5 * n * n - 4);
+}
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    if (isFibonacci(num)) {
+        cout << num << " is a term in the Fibonacci series." << endl;
+    } else {
+        cout << num << " is not a term in the Fibonacci series." << endl;
+    }
+
+    return 0;
+}
+6. Swap Using Call by Reference:
+
+
+#include <iostream>
+using namespace std;
+
+void swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    cout << "Before swap: x = " << x << ", y = " << y << endl;
+    swap(x, y);
+    cout << "After swap: x = " << x << ", y = " << y << endl;
+
+    return 0;
+}
+7. Add 2 or 3 Numbers with Default Argument:
+
+
+#include <iostream>
+using namespace std;
+
+int add(int a, int b, int c = 0) {
+    return a + b + c;
+}
+
+int main() {
+    int num1, num2, num3;
+    cout << "Enter two or three numbers: ";
+    cin >> num1 >> num2 >> num3;
+
+    int result = add(num1, num2, num3);
+    cout << "Sum: " << result << endl;
+
+    return 0;
+}
+8. Calculate Area of Shapes (Overloaded Functions):
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+const double PI = 3.14159265;
+
+double calculateArea(double radius) {
+    return PI * radius * radius;
+}
+
+double calculateArea(double length, double width) {
+    return length * width;
+}
+
+double calculateArea(double a, double b, double c) {
+    double s = (a + b + c) / 2;
+    return sqrt(s * (s - a) * (s - b) * (s - c));
+}
+
+int main() {
+    double radius, length, width, a, b, c;
+    cout << "Enter the radius of a circle: ";
+    cin >> radius;
+    cout << "Area of circle: " << calculateArea(radius) << endl;
+
+    cout << "Enter the length and width of a rectangle: ";
+    cin >> length >> width;
+    cout << "Area of rectangle: " << calculateArea(length, width) << endl;
+
+    cout << "Enter the sides of a triangle: ";
+    cin >> a >> b >> c;
+    cout << "Area of triangle: " << calculateArea(a, b, c) << endl;
+
+    return 0;
+}
+9. Find Maximum of Two Numbers (Overloaded Functions):
+
+
+#include <iostream>
+using namespace std;
+
+int findMax(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+double findMax(double a, double b) {
+    return (a > b) ? a : b;
+}
+
+int main() {
+    int num1, num2;
+    double real1, real2;
+
+    cout << "Enter two integers: ";
+    cin >> num1 >> num2;
+    cout << "Maximum integer: " << findMax(num1, num2) << endl;
+
+    cout << "Enter two real numbers: ";
+    cin >> real1 >> real2;
+    cout << "Maximum real number: " << findMax(real1, real2) << endl;
+
+    return 0;
+}
+10. Add Numbers with Different Data Types (Overloaded Functions):
+
+
+#include <iostream>
+using namespace std;
+
+int add(int a, int b) {
+    return a + b;
+}
+
+double add(double a, double b) {
+    return a + b;
+}
+
+int main() {
+    int num1, num2;
+    double real1, real2;
+
+    cout << "Enter two integers: ";
+    cin >> num1 >> num2;
+    cout << "Sum of integers: " << add(num1, num2) << endl;
+
+    cout << "Enter two real numbers: ";
+    cin >> real1 >> real2;
+    cout << "Sum of real numbers: " << add(real1, real2) << endl;
+
+    return 0;
+}
